@@ -1,0 +1,51 @@
+{% extends 'base.html' %} {% block content %}
+<div className="container">
+  <div>
+    <form
+      class="form-inline my-2 my-lg-0"
+      method="post"
+      action="/pyrods/django/new/"
+    >
+      {% csrf_token %}
+      <input
+        class="form-control mr-sm-2"
+        type="text"
+        placeholder="name"
+        aria-label="name"
+        name="name"
+        value="name"
+      />
+      <input
+        class="form-control mr-sm-2"
+        type="text"
+        placeholder="describe"
+        aria-label="describe"
+        name="describe"
+        value="describe"
+      />
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+        New Product
+      </button>
+    </form>
+  </div>
+  <ul class="list-group">
+    {% for object in object_list %}
+    <li class="list-group-item">
+      <span class="text-info">Name: </span> <span>{{ object.name }}</span>
+      <br />
+      <span class="text-info">Description: </span
+      ><span>{{ object.describe }}</span>
+      <br />
+      <span class="text-info">Id: </span><span>{{ object.id }}</span>
+      <a
+        class="btn btn-primary btn-sm active"
+        role="button"
+        href="{% url 'pdetail' object.pk %}"
+        >detail</a
+      >
+      <br />
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

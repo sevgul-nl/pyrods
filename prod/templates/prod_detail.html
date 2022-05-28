@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% block content %}
+<div className="container">
+  <br />
+  <h3>Product Details</h3>
+  <hr />
+  <span class="text-info">Name: </span> <span>{{ object.name }}</span>
+  <br />
+  <span class="text-info">Description: </span><span>{{ object.describe }}</span>
+  <br />
+  <span class="text-info">Id: </span><span>{{ object.id }}</span>
+  <a
+    class="btn btn-primary btn-sm active"
+    role="button"
+    href="{% url 'pupdate' object.pk %}"
+    >update</a
+  >
+  <a
+    class="btn btn-primary btn-sm active"
+    role="button"
+    href="{% url 'pdelete' object.pk %}"
+    >detail</a
+  >
+</div>
+{% endblock %}
