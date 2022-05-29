@@ -6,4 +6,4 @@ COPY requirements.txt /code/
 RUN pip install -r requirements.txt
 COPY . /code/
 #RUN python manage.py migrate
-ENTRYPOINT ["python", "manage.py", "runserver", "0.0.0.0:8100"]
+ENTRYPOINT ["python", "manage.py", "runserver --insecure", "0.0.0.0:8100"]
