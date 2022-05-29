@@ -50,37 +50,41 @@ export default class ProductList extends Component {
         <div>
           <ProductForm />
         </div>
-        <ul className="list-group">
-          {this.state.prods.map((item) => {
-            return (
-              <li className="list-group-item">
-                <span
-                  className="text-info"
-                  key={item.id}
-                  onClick={() => this.prodDetail(item)}
-                >
-                  Name:{' '}
-                </span>
-                <span>{item.name}</span>
-
-                <br />
-                <span className="text-info">Description: </span>
-                <span>{item.describe} </span>
-                <br />
-                <span className="text-info">Id: </span>
-                <span>{item.id} </span>
-                <a
-                  className="btn btn-primary btn-sm active"
-                  role="button"
-                  onClick={() => this.prodDetail(item)}
-                >
-                  detail
-                </a>
-                <br />
-              </li>
-            );
-          })}
-        </ul>
+        <table className="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.state.prods.map((item) => {
+              return (
+                <tr key={item.name}>
+                  <td>
+                    <span key={item.id} onClick={() => this.prodDetail(item)}>
+                      {item.name}
+                    </span>
+                  </td>
+                  <td>
+                    <span key={item.id} onClick={() => this.prodDetail(item)}>
+                      {item.describe}
+                    </span>
+                  </td>
+                  <td>
+                    <a
+                      class="btn btn-primary btn-sm active"
+                      role="button"
+                      onClick={() => this.prodDetail(item)}
+                    >
+                      detail
+                    </a>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
         {this.state.flagShowDetails ? <Product prod={this.state.prod} /> : null}
       </div>
     );

@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import ProductUpdate from './pupdate';
+import ProductDelete from './pdelete';
+import ProductList from './plist';
 
 export default class Product extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      flagShowProduct: false,
+      flagShowProductU: false,
+      flagShowProductD: false,
     };
 
     this.updateProduct = this.updateProduct.bind(this);
@@ -14,18 +17,10 @@ export default class Product extends Component {
   }
 
   updateProduct() {
-    this.setState({ flagShowProduct: true });
+    this.setState({ flagShowProductU: true });
   }
-  deleteProduct(delurl) {
-    console.log(delurl);
-    axios
-      .delete(delurl)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+  deleteProduct() {
+    this.setState({ flagShowProductD: true });
   }
 
   render() {
@@ -34,24 +29,36 @@ export default class Product extends Component {
     //console.log(prod);
     return (
       <div style={{ color: 'gray', border: '1px solid gray' }}>
-        <h5>
-          {prod.id}, {prod.name}, {prod.describe}, {prod.created}, {prod.edited}
-          , {prod.update}, {prod.delete}
-        </h5>
-        <button
-          style={{ backgroundColor: 'white' }}
+        <br />
+        <span class="text-info">Name: </span> <span>{prod.name}</span>
+        <br />
+        <span class="text-info">Description: </span>
+        <span>{prod.describe}</span>
+        <br />
+        <span class="text-info">Id: </span>
+        <span>{prod.id}</span>
+        <br />
+        <span>{'   '}</span>
+        <a
+          class="btn btn-primary btn-sm active"
+          role="button"
           onClick={() => this.updateProduct()}
         >
-          Update
-        </button>
-        <button
-          style={{ backgroundColor: 'white' }}
-          onClick={() => this.deleteProduct(prod.delete)}
+          update
+        </a>
+        <span>{'   '}</span>
+        <a
+          class="btn btn-primary btn-sm active"
+          role="button"
+          onClick={() => this.deleteProduct()}
         >
-          Delete
-        </button>
-        {this.state.flagShowProduct ? (
+          delete
+        </a>
+        {this.state.flagShowProductU ? (
           <ProductUpdate productUpdate={prod} />
+        ) : null}
+        {this.state.flagShowProductD ? (
+          <ProductDelete productDelete={prod} />
         ) : null}
       </div>
     );

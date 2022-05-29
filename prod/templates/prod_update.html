@@ -1,0 +1,43 @@
+{% extends 'base.html' %} {% block content %}
+<div className="container">
+  <br />
+  <h3>Product Update</h3>
+  <hr />
+
+  <form
+    class="form-inline my-2 my-lg-0"
+    method="post"
+    action="/pyrods/django/edit/{{object.id}}/"
+  >
+    {% csrf_token %}
+    <input
+      class="form-control mr-sm-2"
+      type="text"
+      placeholder="name"
+      aria-label="name"
+      name="name"
+      value="{{object.name}}"
+    />
+    <input
+      class="form-control mr-sm-2"
+      type="text"
+      placeholder="describe"
+      aria-label="describe"
+      name="describe"
+      value="{{object.describe}}"
+    />
+
+    <br />
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+      Update Product
+    </button>
+
+    <button class="btn btn-outline-success my-2 my-sm-0" type="button">
+      <a href="{% url 'plist'  %}">home</a>
+    </button>
+  </form>
+  <br />
+  <br />
+  <br />
+</div>
+{% endblock %}

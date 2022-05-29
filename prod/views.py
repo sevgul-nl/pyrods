@@ -22,11 +22,12 @@ class CreateProductView(CreateView):
 
 class UpdateProductView(UpdateView):
     model = Product
-    template_name = 'prod_detail.html'
+    template_name = 'prod_update.html'
     fields = ['name', 'describe']
+    #success_url = reverse_lazy("pdetail")
 
 
 class DeleteProductView(DeleteView):  # new
     model = Product
-    template_name = 'prod_dedail.html'
+    template_name = 'prod_delete.html'
     success_url = reverse_lazy('plist')

@@ -1,0 +1,45 @@
+{% extends 'base.html' %} {% block content %}
+<div className="container">
+  <br />
+  <h3>Product Delete</h3>
+  <hr />
+
+  <form
+    class="form-inline my-2 my-lg-0"
+    method="post"
+    action="/pyrods/django/del/{{object.id}}/"
+  >
+    {% csrf_token %}
+    <div class="container">
+      <div class="row">
+        <span class="text-info">Confirm to delete {{ object.id }} ?</span>
+      </div>
+      <br/>
+      <div class="row">
+        <span class="text-info">Name: </span> <span>{{ object.name }}</span>
+      </div>
+      <div class="row">
+        <span class="text-info">Description: </span
+        ><span>{{ object.describe }}</span>
+      </div>
+        <br/>
+      <div class="row">
+  
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          Confirm
+        </button>
+        <div class="col">  
+          <button class="btn btn-outline-success my-2 my-sm-0" type="button">
+            <a href="{% url 'plist'  %}">home</a>
+          </button>
+        </div>
+      </div>
+
+        <br/>
+        <br/>
+        <br/>
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock %}

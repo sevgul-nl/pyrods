@@ -17,7 +17,7 @@ export default class ProductUpdate extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   }
   handleSubmit(event) {
-    event.preventDefault();
+    //event.preventDefault();
     axios
       .patch(this.state.obj_to_update.update, {
         name: this.state.name,
@@ -36,23 +36,24 @@ export default class ProductUpdate extends React.Component {
       <div style={{ color: 'red', border: '1px solid red' }}>
         <form onSubmit={this.handleSubmit}>
           <div>
-            <h6>Updating</h6>
-          </div>
-          <div>
-            Product name
             <input
+              class="form-control mr-sm-2"
               type="text"
+              placeholder="name"
+              aria-label="name"
               name="name"
-              value={name}
+              defaultValue={name}
               onChange={this.handleChange}
             />
           </div>
           <div>
-            describe
             <input
+              class="form-control mr-sm-2"
               type="text"
+              placeholder="describe"
+              aria-label="describe"
+              defaultValue={describe}
               name="describe"
-              value={describe}
               onChange={this.handleChange}
             />
           </div>

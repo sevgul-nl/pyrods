@@ -32,8 +32,6 @@ export default class ProductForm extends Component {
   }
 
   handleSubmit(event) {
-    event.preventDefault();
-
     axios
       .post('/pyrods/api/new/', {
         name: this.state.name,
